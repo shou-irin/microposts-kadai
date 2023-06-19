@@ -5,7 +5,7 @@
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-error btn-block normal-case" 
-                onclick="return confirm('id = {{ $user->id }} のフォローを外します。よろしいですか？')">Unfollow</button>
+                onclick="return confirm('フォローを外します。よろしいですか？')">Unfollow</button>
         </form>
     @else
         {{-- フォローボタンのフォーム --}}
