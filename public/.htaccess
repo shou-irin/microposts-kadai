@@ -1,3 +1,40 @@
+SetEnvIf X-Forwarded-For 39.110.218.162 allowip1
+SetEnvIf X-Forwarded-For 124.35.86.197 allowip2
+SetEnvIf X-Forwarded-For 150.249.216.208 allowip3
+SetEnvIf X-Forwarded-For 150.249.216.209 allowip4
+SetEnvIf X-Forwarded-For 150.249.216.210 allowip5
+SetEnvIf X-Forwarded-For 150.249.216.211 allowip6
+SetEnvIf X-Forwarded-For 150.249.216.212 allowip7
+SetEnvIf X-Forwarded-For 150.249.216.213 allowip8
+SetEnvIf X-Forwarded-For 150.249.216.214 allowip9
+SetEnvIf X-Forwarded-For 150.249.216.215 allowip10
+SetEnvIf X-Forwarded-For 113.43.205.58 allowip11
+SetEnvIf X-Forwarded-For 113.43.205.59 allowip12
+SetEnvIf X-Forwarded-For 113.43.205.60 allowip13
+SetEnvIf X-Forwarded-For 113.43.205.61 allowip14
+SetEnvIf X-Forwarded-For 113.43.205.62 allowip15
+SetEnvIf X-Forwarded-For 210.227.75.222 allowip16
+SetEnvIf X-Forwarded-For 101.143.53.8 allowip17
+
+order deny,allow
+deny  from all
+allow from env=allowip1
+allow from env=allowip2
+allow from env=allowip3
+allow from env=allowip4
+allow from env=allowip5
+allow from env=allowip6
+allow from env=allowip7
+allow from env=allowip8
+allow from env=allowip9
+allow from env=allowip10
+allow from env=allowip11
+allow from env=allowip12
+allow from env=allowip13
+allow from env=allowip14
+allow from env=allowip15
+allow from env=allowip16
+allow from env=allowip17
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
@@ -14,7 +51,7 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # Send Requests To Front Controller...
+    # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]

@@ -211,5 +211,11 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+    
+    'middleware' => [
+    // ...
+    \App\Http\Middleware\TrustProxies::class,
+    // ...
+],
 
 ];

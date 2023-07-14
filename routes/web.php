@@ -24,7 +24,7 @@ Route::get('/dashboard', [MicropostsController::class, 'index'])->middleware(['a
 
 require __DIR__.'/auth.php';
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'iplimit']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {                                          // 追記
         Route::post('follow', [UserFollowController::class, 'store'])->name('user.follow');         // 追記
         Route::delete('unfollow', [UserFollowController::class, 'destroy'])->name('user.unfollow'); // 追記
